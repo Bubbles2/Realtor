@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Buyer" representedClassName="Buyer" syncable="YES">
+        <attribute name="adddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="budget" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="buyerCode" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="requiredPostCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="propertiesVisited" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Property" syncable="YES"/>
+        <relationship name="requiredPropertyTypes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PropertyType" syncable="YES"/>
+    </entity>
+    <entity name="Owner" representedClassName="Owner" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientCode" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exclusive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valuation" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="properties" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Property" inverseName="owner" inverseEntity="Property" syncable="YES"/>
+    </entity>
+    <entity name="Property" representedClassName="Property" syncable="YES">
+        <attribute name="dateAvailable" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="dateStart" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="novisits" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="propAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="propertyCode" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Owner" inverseName="properties" inverseEntity="Owner" syncable="YES"/>
+        <relationship name="propertyType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PropertyType" inverseName="propertiesofType" inverseEntity="PropertyType" syncable="YES"/>
+    </entity>
+    <entity name="PropertyType" representedClassName="PropertyType" syncable="YES">
+        <attribute name="typeDesc" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="propertiesofType" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Property" inverseName="propertyType" inverseEntity="Property" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Owner" positionX="-171" positionY="-369" width="128" height="193"/>
+        <element name="Property" positionX="16" positionY="-231" width="128" height="148"/>
+        <element name="PropertyType" positionX="178" positionY="24" width="128" height="73"/>
+        <element name="Buyer" positionX="171" positionY="-486" width="128" height="178"/>
+    </elements>
+</model>
